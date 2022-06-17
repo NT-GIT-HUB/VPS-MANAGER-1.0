@@ -39,6 +39,7 @@ criarssh30() {
     final=$(date "+%Y-%m-%d" -d "+$tempo days")
     gui=$(date "+%d/%m/%Y" -d "+$tempo days")
     pass=$(perl -e 'print crypt($ARGV[0], "password")' $senha)
+    msgex='Ao realizar a Compra envie o compravante no dia da compra pois não sera aceito em outra data e salve sua Conta SSH'
     
   if [[ "$(grep -wc $usuario /etc/passwd)" != '0' ]]; then
       ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
@@ -53,7 +54,7 @@ criarssh30() {
 
     # - ENVIA O SSH
     ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-    --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\n<b>SERVIDOR</b>: \n<b>USUARIO</b>: <code>$usuario</code>\n<b>SENHA</b>: <code>$senha</code>\n<b>ACESSO</b>: 01\n\n⏳ Expira em: $gui ")" \
+    --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\n<b>SERVIDOR</b>: \n<b>USUARIO</b>: <code>$usuario</code>\n<b>SENHA</b>: <code>$senha</code>\n<b>ACESSO</b>: 01\n\n⏳ Expira em: $gui \n$msgex ")" \
     --parse_mode html
     return 0
   fi
@@ -69,6 +70,7 @@ criarssh15() {
     final=$(date "+%Y-%m-%d" -d "+$tempo days")
     gui=$(date "+%d/%m/%Y" -d "+$tempo days")
     pass=$(perl -e 'print crypt($ARGV[0], "password")' $senha)
+    msgex='Ao realizar a Compra envie o compravante no dia da compra pois não sera aceito em outra data e salve sua Conta SSH'
     
   if [[ "$(grep -wc $usuario /etc/passwd)" != '0' ]]; then
       ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
@@ -83,7 +85,7 @@ criarssh15() {
 
     # - ENVIA O SSH
     ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-    --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\n<b>SERVIDOR</b>: \n<b>USUARIO</b>: <code>$usuario</code>\n<b>SENHA</b>: <code>$senha</code>\n<b>ACESSO</b>: 01\n\n⏳ Expira em: $gui ")" \
+    --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\n<b>SERVIDOR</b>: \n<b>USUARIO</b>: <code>$usuario</code>\n<b>SENHA</b>: <code>$senha</code>\n<b>ACESSO</b>: 01\n\n⏳ Expira em: $gui \n$msgex  ")" \
     --parse_mode html
     return 0
   fi
