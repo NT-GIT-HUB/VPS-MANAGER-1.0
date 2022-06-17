@@ -6,13 +6,15 @@
     echo -ne "\033[1;32mINFORME O TOKEN\033[1;37m: "; read token
     echo ""
     echo -ne "\033[1;32mINFORME SEU ID\033[1;37m: "; read idtelegram
+ echo ""
+    echo -ne "\033[1;32mNOME DO SERVIDOR\033[1;37m: "; read idserver
     cd /etc/VPSManager
-    screen -dmS bot_gen ./botgerador $token $idtelegram > /dev/null 2>&1
+    screen -dmS bot_gen ./botgerador $token $idtelegram $idserver> /dev/null 2>&1
     [[ $(grep -wc "bot_gen" /etc/autostart) = '0' ]] && {
-                echo -e "ps x | grep 'bot_gen' | grep -v 'grep' || cd /etc/VPSManager && sudo screen -dmS bot_gen ./botgerador $token $idtelegram && cd $HOME" >>/etc/autostart
+                echo -e "ps x | grep 'bot_gen' | grep -v 'grep' || cd /etc/VPSManager && sudo screen -dmS bot_gen ./botgerador $token $idtelegram $idserver && cd $HOME" >>/etc/autostart
             } || {
                 sed -i '/bot_gen/d' /etc/autostart
-                echo -e "ps x | grep 'bot_gen' | grep -v 'grep' || cd /etc/VPSManager && sudo screen -dmS bot_gen ./botgerador $token $idtelegram && cd $HOME" >>/etc/autostart
+                echo -e "ps x | grep 'bot_gen' | grep -v 'grep' || cd /etc/VPSManager && sudo screen -dmS bot_gen ./botgerador $token $idtelegram $idserver && cd $HOME" >>/etc/autostart
             }  
     clear && echo "BOT ATIVADO"
 } || {
